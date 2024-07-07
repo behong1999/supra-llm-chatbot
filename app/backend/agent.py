@@ -117,7 +117,7 @@ def create_agent(llm: AzureChatOpenAI) -> AgentExecutor:
     tools = get_agent_tools()
     prompt_template = ChatPromptTemplate.from_template(get_prompt())
     # prompt_template = hub.pull("hwchase17/react")
-    memory = ConversationBufferWindowMemory(k=1)
+    memory = ConversationBufferWindowMemory(k=0)
     agent = create_react_agent(llm=llm, tools=tools, prompt=prompt_template)
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, memory=memory, handle_parsing_errors=True)
 
